@@ -29,7 +29,22 @@ const slice = createSlice({
   },
 });
 
-
+const initialisApp = createAppAsyncThunk<any, any>(`${slice.name}/initialisApp`, async (arg, thunkAPI) => {
+  const { dispatch, rejectWithValue } = thunkAPI;
+  try {
+    const res = await authAPI.me();
+    if (res.data.resultCode === 0) {
+      dispatch(authActions.setIsLoggedIn({ isLoggedIn: true }));
+    } else {
+      handleServerAppError(res.data, dispatch);
+      return rejectWithValue(null);
+    }
+    dispatch(appActions.setAppInitialized({ isInitialized: true }));
+  } catch (e) {
+    handleServerNetworkError(e, dispatch);
+    return rejectWithValue(null);
+  }
+});
 
 export const appReducer = slice.reducer;
 export const appActions = slice.actions;

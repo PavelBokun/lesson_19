@@ -29,11 +29,11 @@ function App() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(authThunks.initialisApp());
+    dispatch(authThunks.initialisAp));
   }, []);
 
   const logoutHandler = useCallback(() => {
-    dispatch(authThunks.logout());
+    dispatch(authThunks.logout);
   }, []);
 
   if (!isInitialized) {

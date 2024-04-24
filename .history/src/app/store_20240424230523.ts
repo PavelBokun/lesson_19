@@ -20,6 +20,7 @@ export type AppRootStateType = ReturnType<typeof store.getState>;
 
 
 
-export type AppDispatch = typeof store.dispatch
+export type AppDispatch = typeof 
 
-
+// @ts-ignore
+window.store = store;

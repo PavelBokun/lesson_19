@@ -16,10 +16,11 @@ export const store = configureStore({
   }
 });
 
-export type AppRootStateType = ReturnType<typeof store.getState>;
+export type AppRootStateType = ReturnType<typeof store>;
 
+export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppRootStateType, unknown, AnyAction>;
 
+export type AppDispatch = ThunkDispatch<AppRootStateType, unknown, AnyAction>;
 
-export type AppDispatch = typeof store.dispatch
-
-
+// @ts-ignore
+window.store = store;

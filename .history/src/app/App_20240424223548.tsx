@@ -33,7 +33,7 @@ function App() {
   }, []);
 
   const logoutHandler = useCallback(() => {
-    dispatch(authThunks.logout());
+    dispatch(authThunks.logout);
   }, []);
 
   if (!isInitialized) {

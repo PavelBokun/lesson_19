@@ -12,6 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Menu } from "@mui/icons-material";
+import { initializeApp } from "app/app.reducer";
 import { Login } from "features/auth/Login";
 import "./App.css";
 import { TodolistsList } from "features/TodolistsList/TodolistsList";
@@ -29,11 +30,11 @@ function App() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(authThunks.initialisApp());
+    dispatch();
   }, []);
 
   const logoutHandler = useCallback(() => {
-    dispatch(authThunks.logout());
+    dispatch(authThunks.logout);
   }, []);
 
   if (!isInitialized) {
