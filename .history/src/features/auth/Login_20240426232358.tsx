@@ -36,7 +36,7 @@ export const Login = () => {
         .unwrap()
         .then((res) => {})
         .catch((e: BaseResponseType) => {
-                    alert(e.fieldsErrors[0].error);
+          alert(e.fieldsErrors[0].error);
         });
     },
   });

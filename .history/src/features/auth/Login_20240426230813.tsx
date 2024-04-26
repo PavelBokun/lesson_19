@@ -6,7 +6,7 @@ import { Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, 
 import { useAppDispatch } from "common/hooks";
 import { selectIsLoggedIn } from "features/auth/auth.selectors";
 import { authThunks } from "features/auth/auth.reducer";
-import { BaseResponseType } from "common/types/common.types";
+import { BaseResponseType } from 'common/types/common.types';
 
 export const Login = () => {
   const dispatch = useAppDispatch();
@@ -33,12 +33,14 @@ export const Login = () => {
     },
     onSubmit: (values) => {
       dispatch(authThunks.login(values))
-        .unwrap()
-        .then((res) => {})
-        .catch((e: BaseResponseType) => {
-                    alert(e.fieldsErrors[0].error);
-        });
-    },
+      .unwrap()
+      .then((res)=>{
+      
+      })
+      .catch((e: BaseResponseType)=>{
+       console.
+      })
+    }
   });
 
   if (isLoggedIn) {
