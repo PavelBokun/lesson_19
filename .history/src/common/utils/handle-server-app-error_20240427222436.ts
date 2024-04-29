@@ -3,6 +3,11 @@ import { appActions } from "app/app.reducer";
 import { BaseResponseType } from "common/types/common.types";
 
 
+/**
+ * 
+ * @param data 
+ * @param dispatch 
+ */
 export const handleServerAppError = <D>(data: BaseResponseType<D>, dispatch: Dispatch) => {
   if (data.messages.length) {
     dispatch(appActions.setAppError({ error: data.messages[0] }));

@@ -15,31 +15,29 @@ export const Login = () => {
 
   const formik = useFormik({
     validate: (values) => {
-      // if (!values.email) {
-      //   return {
-      //     email: "Email is required",
-      //   };
-      // }
-      // if (!values.password) {
-      //   return {
-      //     password: "Password is required",
-      //   };
-      // }
+      if (!values.email) {
+        return {
+          email: "Email is required",
+        };
+      }
+      if (!values.password) {
+        return {
+          password: "Password is required",
+        };
+      }
     },
     initialValues: {
       email: "",
       password: "",
       rememberMe: false,
     },
-    onSubmit: (values, formikHelpers) => {
+    onSubmit: (values, formikHe) => {
       dispatch(authThunks.login(values))
         .unwrap()
         .then((res) => {})
         .catch((e: BaseResponseType) => {
-          // formikHelpers.setFieldError(e.fieldsErrors[0].field, e.fieldsErrors[0].error);
-          e.fieldsErrors.forEach((el)=>{
-            formikHelpers.setFieldError (el.field, el.error)
-          })
+
+                    alert(e.fieldsErrors[0].error);
         });
     },
   });
@@ -66,7 +64,7 @@ export const Login = () => {
             </FormLabel>
             <FormGroup>
               <TextField label="Email" margin="normal" {...formik.getFieldProps("email")} />
-              {formik.errors.email ? <div style={{color:"red"}}>{formik.errors.email}</div> : null}
+              {formik.errors.email ? <div>{formik.errors.email}</div> : null}
               <TextField type="password" label="Password" margin="normal" {...formik.getFieldProps("password")} />
               {formik.errors.password ? <div>{formik.errors.password}</div> : null}
               <FormControlLabel

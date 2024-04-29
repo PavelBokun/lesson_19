@@ -15,16 +15,16 @@ export const Login = () => {
 
   const formik = useFormik({
     validate: (values) => {
-      // if (!values.email) {
-      //   return {
-      //     email: "Email is required",
-      //   };
-      // }
-      // if (!values.password) {
-      //   return {
-      //     password: "Password is required",
-      //   };
-      // }
+      if (!values.email) {
+        return {
+          email: "Email is required",
+        };
+      }
+      if (!values.password) {
+        return {
+          password: "Password is required",
+        };
+      }
     },
     initialValues: {
       email: "",
@@ -37,9 +37,7 @@ export const Login = () => {
         .then((res) => {})
         .catch((e: BaseResponseType) => {
           // formikHelpers.setFieldError(e.fieldsErrors[0].field, e.fieldsErrors[0].error);
-          e.fieldsErrors.forEach((el)=>{
-            formikHelpers.setFieldError (el.field, el.error)
-          })
+          e.fieldsErrors.forEach((el))
         });
     },
   });
